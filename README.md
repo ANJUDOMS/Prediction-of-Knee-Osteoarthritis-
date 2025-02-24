@@ -6,8 +6,11 @@ Prediction of Knee Osteoarthritis on X-ray Images using Densenet 121 deep learni
 
 # Dataset :
 The model is trained on the dataset, containing X-ray images of knee joints labeled with different grades of osteoarthritis.
+
 Link - https://data.mendeley.com/datasets/t9ndx37v5h/1
+
 Data Classes : Normal, Doubtful, Mild, Moderate, Severe
+
 Format : X-ray images .png format
 
 ## Installation
