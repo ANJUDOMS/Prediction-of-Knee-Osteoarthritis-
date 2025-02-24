@@ -58,18 +58,28 @@ Result
 (https://github.com/user-attachments/assets/85eb314a-e36e-497b-be52-1bbadb84b11b)
 
 1. Performance Metrics (Per Class)
+
 Class	Precision	Recall	F1-Score
+
 0 Normal	94.68%	80.95%	87.28%
+
 1 Doubtful	76.99%	87.91%	82.08%
+
 2 Mild	83.94%	77.51%	80.60%
+
 3 Moderate	89.57%	94.97%	92.19%
+
 4 Severe	86.15%	90.81%	88.42%
 
 
 2. Interpretation of Results
+
 High Precision in "0 Normal" (94.68%): The model rarely misclassifies other classes as "Normal," but its recall (80.95%) indicates that some normal cases are misclassified.
+
 "3 Moderate" Has the Best Recall (94.97%): The model correctly identifies most moderate cases but has some false positives (precision = 89.57%).
+
 "1 Doubtful" is Slightly Challenging: While recall is high (87.91%), the precision is lower (76.99%), meaning many other classes are wrongly classified as "Doubtful."
+
 Balanced Performance on "4 Severe": With precision at 86.15% and recall at 90.81%, the model does well on severe cases.
 
 
