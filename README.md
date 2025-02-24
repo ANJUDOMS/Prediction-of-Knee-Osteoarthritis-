@@ -61,15 +61,15 @@ Result
 
 Class	Precision	Recall	F1-Score
 
-0 Normal	94.68%	80.95%	87.28%
+0 Normal	   94.68%	80.95%	87.28%
 
 1 Doubtful	76.99%	87.91%	82.08%
 
-2 Mild	83.94%	77.51%	80.60%
+2 Mild	   83.94%	77.51%	80.60%
 
 3 Moderate	89.57%	94.97%	92.19%
 
-4 Severe	86.15%	90.81%	88.42%
+4 Severe	   86.15%	90.81%	88.42%
 
 
 2. Interpretation of Results
