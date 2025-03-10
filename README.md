@@ -1,85 +1,65 @@
-# Prediction-of-Knee-Osteoarthritis-
-Prediction of Knee Osteoarthritis on X-ray Images using Densenet 121 deep learning architecture
+Knee Osteoarthritis Classification using Deep Learning
+Overview
+This repository contains a deep learning model for classifying knee osteoarthritis (KOA) severity from X-ray images. The model is based on DenseNet121 with attention mechanisms (CBAM, SE blocks) and Grad-CAM visualization to interpret predictions. It uses Focal Loss, data augmentation, and class balancing techniques to improve accuracy.
 
+Dataset
+The model is trained on a dataset of knee X-ray images categorized into five severity levels based on the Kellgren-Lawrence (KL) grading system:
 
-# Medical Knee X-Ray Classifier
+0 - Normal
+1 - Doubtful
+2 - Mild
+3 - Moderate
+4 - Severe
+The dataset is split into train, validation, and test sets.
 
-# Dataset :
-The model is trained on the dataset, containing X-ray images of knee joints labeled with different grades of osteoarthritis.
+Model Architecture
+Base Model: DenseNet121 (pretrained on ImageNet)
+Input Size: 224x224 pixels
+Attention Mechanisms: CBAM (Convolutional Block Attention Module) and SE (Squeeze-and-Excitation) blocks
+Loss Function: Focal Loss (handles class imbalance)
+Optimization: Adam optimizer
+Output: Softmax activation for multi-class classification
+Key Features
+✅ Automatic ROI Cropping – Focuses on the knee joint area before classification
+✅ Data Augmentation – Tailored transformations for underrepresented classes
+✅ Class Imbalance Handling – Oversampling, undersampling, and weighted loss
+✅ Grad-CAM Visualization – Heatmaps to interpret model decisions
+✅ Performance Metrics – Computes accuracy, precision, recall, and F1-score
 
-Link - https://data.mendeley.com/datasets/t9ndx37v5h/1
-
-Data Classes : Normal, Doubtful, Mild, Moderate, Severe
-
-Format : X-ray images .png format
-
-## Installation
-
-1. Clone the repository:
+Installation
+Clone the repository:
 ```
-git clone https://github.com/your-username/medical-knee-xray-classifier.git
+git clone https://github.com/yourusername/knee-osteoarthritis-classification.git
+cd knee-osteoarthritis-classification
 ```
-2. Install the required dependencies:
+
+Install dependencies:
 ```
 pip install -r requirements.txt
 ```
 
-## Usage
-
-1. Prepare your dataset:
-   - Place your knee X-ray images in the appropriate directories (e.g., "Normal", "Mild", "Moderate", "Severe", "Doubtful").
-   - Modify the `expert1_dir` and `output_directory` variables in the code to match your file paths.
-2. Run the data preprocessing and augmentation script:
-```python
-python medical_new_koa.py
+Usage
+Training the Model
+Run the training script:
 ```
-3. Train the DenseNet121-based model:
-```python
-python train_model.py
+python train.py --epochs 50 --batch_size 32 --lr 0.0001
+
 ```
-4. Evaluate the model on the test set:
-```python
-python evaluate_model.py
+Evaluating the Model
+To test the model on the validation/test set:
+```
+python evaluate.py --model_path best_model.h5
+```
+Grad-CAM Visualization
+To visualize heatmaps:
+```
+python gradcam.py --image_path sample_xray.jpg --model_path best_model.h5
 ```
 
-## API
+Training Configuration
+![image](https://github.com/user-attachments/assets/96f446dc-0624-4dce-84f7-5b6f12858a8f)
 
-The main functions and classes used in this project are:
-
-- `augment_image(image)`: Performs basic image augmentation (horizontal flip, vertical flip, rotation).
-- `extra_augment_image(image)`: Applies additional augmentation techniques (Gaussian blur, contrast adjustment) for the "Mild" and "Doubtful" classes.
-- `process_images(source_dir, prefix)`: Processes the images, applies augmentation, and saves the results to the output directory.
-- `train_model.py`: Trains the DenseNet121-based model on the preprocessed dataset.
-- `evaluate_model.py`: Evaluates the trained model on the test set and generates a confusion matrix and classification report.
-
-
-Result
-
-(https://github.com/user-attachments/assets/85eb314a-e36e-497b-be52-1bbadb84b11b)
-
-1. Performance Metrics (Per Class)
-
-Class	Precision	Recall	F1-Score
-
-0 Normal	   94.68%	80.95%	87.28%
-
-1 Doubtful	76.99%	87.91%	82.08%
-
-2 Mild	   83.94%	77.51%	80.60%
-
-3 Moderate	89.57%	94.97%	92.19%
-
-4 Severe	   86.15%	90.81%	88.42%
-
-
-2. Interpretation of Results
-
-High Precision in "0 Normal" (94.68%): The model rarely misclassifies other classes as "Normal," but its recall (80.95%) indicates that some normal cases are misclassified.
-
-"3 Moderate" Has the Best Recall (94.97%): The model correctly identifies most moderate cases but has some false positives (precision = 89.57%).
-
-"1 Doubtful" is Slightly Challenging: While recall is high (87.91%), the precision is lower (76.99%), meaning many other classes are wrongly classified as "Doubtful."
-
-Balanced Performance on "4 Severe": With precision at 86.15% and recall at 90.81%, the model does well on severe cases.
+Results
+![image](https://github.com/user-attachments/assets/8222fee3-0492-4f58-8d27-b823a3e8a2dc)
 
 
