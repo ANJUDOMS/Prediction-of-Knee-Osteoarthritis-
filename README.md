@@ -1,4 +1,4 @@
-Knee Osteoarthritis Classification using Deep Learning
+#Knee Osteoarthritis Classification using Deep Learning
 Overview
 This repository contains a deep learning model for classifying knee osteoarthritis (KOA) severity from X-ray images. The model is based on DenseNet121 with attention mechanisms (CBAM, SE blocks) and Grad-CAM visualization to interpret predictions. It uses Focal Loss, data augmentation, and class balancing techniques to improve accuracy.
 
